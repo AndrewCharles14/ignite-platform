@@ -1739,6 +1739,11 @@ p, span, a {
     margin-bottom: 15px;
 }
 
+.chat-header h3 {
+    color: #333;
+    margin: 0;
+}
+
 .chat-messages {
     flex: 1;
     overflow-y: auto;
