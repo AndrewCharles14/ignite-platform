@@ -44,35 +44,117 @@
     <main>
         <!-- Home Section -->
         <section id="home" class="section active">
-            <div class="hero">
-                <h2>Welcome to Your Four-Year Journey</h2>
-                <p>Explore career paths, build foundational skills, and graduate with clarity, confidence, and a portfolio of work tied to your passion.</p>
-                
-                <div class="phase-overview">
-                    <div class="phase-card">
-                        <div class="phase-icon">🔍</div>
-                        <h3>Phase 1: Discover</h3>
-                        <p>Freshman Year - Explore 3 career tracks</p>
-                    </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">🔨</div>
-                        <h3>Phase 2: Build</h3>
-                        <p>Sophomore Year - Develop core skills</p>
-                    </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">🎯</div>
-                        <h3>Phase 3: Apply</h3>
-                        <p>Junior Year - Real-world projects</p>
-                    </div>
-                    <div class="phase-card">
-                        <div class="phase-icon">🚀</div>
-                        <h3>Phase 4: Launch</h3>
-                        <p>Senior Year - Capstone & Portfolio</p>
+            <!-- Hero Section -->
+            <div class="landing-hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to Your Four-Year Journey</h1>
+                    <p class="hero-subtitle">Explore career paths, build foundational skills, and graduate with clarity, confidence, and a portfolio of work tied to your passion.</p>
+                    <div class="hero-cta">
+                        <a href="modules.html"><button class="hero-button">Start Your Journey →</button></a>
+                        <a href="#quiz" onclick="showSection('quiz')"><button class="hero-button-secondary">Take Career Quiz</button></a>
                     </div>
                 </div>
-                
-                <div class="cta-container">
-                    <a href="modules.html"><button class="cta-button">Start Exploring →</button></a>
+                <div class="hero-visual">
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Career Tracks</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">16+</div>
+                            <div class="stat-label">Learning Modules</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">AI Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Four Phases Section -->
+            <div class="landing-section phases-section">
+                <div class="section-content">
+                    <div class="section-text">
+                        <h2>Your Four-Year Roadmap</h2>
+                        <p>Every student follows a carefully designed journey from exploration to expertise, with clear milestones and achievements along the way.</p>
+                        <div class="phases-grid">
+                            <div class="phase-item">
+                                <div class="phase-icon">🔍</div>
+                                <div class="phase-info">
+                                    <h4>Phase 1: Discover</h4>
+                                    <p>Freshman Year - Explore 3 career tracks</p>
+                                </div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-icon">🔨</div>
+                                <div class="phase-info">
+                                    <h4>Phase 2: Build</h4>
+                                    <p>Sophomore Year - Develop core skills</p>
+                                </div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-icon">🎯</div>
+                                <div class="phase-info">
+                                    <h4>Phase 3: Apply</h4>
+                                    <p>Junior Year - Real-world projects</p>
+                                </div>
+                            </div>
+                            <div class="phase-item">
+                                <div class="phase-icon">🚀</div>
+                                <div class="phase-info">
+                                    <h4>Phase 4: Launch</h4>
+                                    <p>Senior Year - Capstone & Portfolio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-visual">
+                        <div class="journey-graphic">
+                            <div class="journey-path">
+                                <div class="path-point active">1</div>
+                                <div class="path-line"></div>
+                                <div class="path-point">2</div>
+                                <div class="path-line"></div>
+                                <div class="path-point">3</div>
+                                <div class="path-line"></div>
+                                <div class="path-point">4</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Tracks Section -->
+            <div class="landing-section tracks-section">
+                <div class="section-content reverse">
+                    <div class="section-visual">
+                        <div class="tracks-preview">
+                            <div class="track-preview-card">
+                                <div class="track-preview-icon">🔬</div>
+                                <h4>STEM & Innovation</h4>
+                            </div>
+                            <div class="track-preview-card">
+                                <div class="track-preview-icon">🎨</div>
+                                <h4>Arts & Design</h4>
+                            </div>
+                            <div class="track-preview-card">
+                                <div class="track-preview-icon">🌍</div>
+                                <h4>Social Impact</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-text">
+                        <h2>Choose Your Path</h2>
+                        <p>Discover your passion through our three comprehensive career tracks. Each track offers hands-on projects, real-world applications, and expert mentorship.</p>
+                        <ul class="feature-list">
+                            <li>✅ Interactive learning modules</li>
+                            <li>✅ Portfolio-building projects</li>
+                            <li>✅ Industry mentor connections</li>
+                            <li>✅ Career-specific skill development</li>
+                        </ul>
+                        <a href="modules.html"><button class="section-button">Explore Tracks →</button></a>
+                    </div>
                 </div>
             </div>
         </section>
