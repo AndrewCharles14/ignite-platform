@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite - Interactive Web Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="logo.png" alt="Ignite" class="logo">
+                <h1>Ignite</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showSection('home')">🏠 Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">📚 Learning <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)" onclick="window.location.href='modules.html'">🎯 Explore Tracks</a></li>
+                        <li><a href="#quiz" onclick="showSection('quiz')">🧠 Career Quiz</a></li>
+                        <li><a href="#ai-assistant" onclick="showSection('ai-assistant')">🤖 AI Assistant</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">👥 Community <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#mentors" onclick="showSection('mentors')">💡 Mentor Stories</a></li>
+                        <li><a href="#digital-hub" onclick="showSection('digital-hub')">🎮 Digital Hub</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#progress" onclick="showSection('progress')">📊 My Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>Welcome to Your Four-Year Journey</h2>
+                <p>Explore career paths, build foundational skills, and graduate with clarity, confidence, and a portfolio of work tied to your passion.</p>
+                
+                <div class="phase-overview">
+                    <div class="phase-card">
+                        <div class="phase-icon">🔍</div>
+                        <h3>Phase 1: Discover</h3>
+                        <p>Freshman Year - Explore 3 career tracks</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">🔨</div>
+                        <h3>Phase 2: Build</h3>
+                        <p>Sophomore Year - Develop core skills</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">🎯</div>
+                        <h3>Phase 3: Apply</h3>
+                        <p>Junior Year - Real-world projects</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">🚀</div>
+                        <h3>Phase 4: Launch</h3>
+                        <p>Senior Year - Capstone & Portfolio</p>
+                    </div>
+                </div>
+                
+                <div class="cta-container">
+                    <a href="modules.html"><button class="cta-button">Start Exploring →</button></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Modules Section -->
+        <section id="modules" class="section">
+            <h2>🎯 Explore Your Career Tracks</h2>
+            <p>Choose a track to start your journey. Complete mini-projects in each area to earn your Bronze Badge!</p>
+            
+            <div class="tracks-container">
+                <div class="track-card" onclick="selectTrack('stem')">
+                    <div class="track-icon">🔬</div>
+                    <h3>STEM & Innovation</h3>
+                    <p>Coding, robotics, engineering, data science, and cutting-edge technology</p>
+                    <div class="track-modules">
+                        <span class="module-tag">🤖 Robotics Basics</span>
+                        <span class="module-tag">💻 Intro to Coding</span>
+                        <span class="module-tag">📊 Data Science</span>
+                    </div>
+                    <button class="track-button">Explore STEM →</button>
+                </div>
+                
+                <div class="track-card" onclick="selectTrack('arts')">
+                    <div class="track-icon">🎨</div>
+                    <h3>Arts, Design & Communication</h3>
+                    <p>Creative storytelling, digital design, podcasting, and media production</p>
+                    <div class="track-modules">
+                        <span class="module-tag">🎙️ Podcasting 101</span>
+                        <span class="module-tag">🎬 Video Production</span>
+                        <span class="module-tag">✏️ Graphic Design</span>
+                    </div>
+                    <button class="track-button">Explore Arts →</button>
+                </div>
+                
+                <div class="track-card" onclick="selectTrack('leadership')">
+                    <div class="track-icon">🌍</div>
+                    <h3>Social Change & Leadership</h3>
+                    <p>Policy-making, community organizing, social impact, and civic engagement</p>
+                    <div class="track-modules">
+                        <span class="module-tag">📝 Policy Writing</span>
+                        <span class="module-tag">🤝 Community Service</span>
+                        <span class="module-tag">🗳️ Civic Engagement</span>
+                    </div>
+                    <button class="track-button">Explore Leadership →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="hero">
+                <h2>🧠 Career Interest Quiz</h2>
+                <p>Discover career paths that match your passions and interests through our comprehensive assessment.</p>
+            </div>
+            
+            <!-- Quiz Welcome -->
+            <div id="career-quiz-welcome" class="career-quiz-section">
+                <div class="quiz-intro-card">
+                    <h3>Welcome to Your Career Discovery Journey!</h3>
+                    <p>This comprehensive quiz will help you discover career paths that align with your interests. You'll answer questions across various categories and receive personalized career recommendations.</p>
+                    
+                    <div class="quiz-scale-info">
+                        <h4>Rating Scale:</h4>
+                        <div class="scale-labels">
+                            <span class="scale-item">1 = Strongly Disagree</span>
+                            <span class="scale-item">3 = Neutral</span>
+                            <span class="scale-item">5 = Strongly Agree</span>
+                        </div>
+                    </div>
+                    
+                    <button id="start-career-quiz-btn" class="cta-button">Start Career Quiz</button>
+                </div>
+            </div>
+
+            <!-- Quiz Form -->
+            <div id="career-quiz-form-container" class="quiz-form-container hidden">
+                <div class="quiz-progress-section">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div id="quiz-progress-fill" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text">Question <span id="current-question-num">1</span> of <span id="total-questions-num">20</span></p>
+                    </div>
+                </div>
+                
+                <form id="career-quiz-form">
+                    <div id="quiz-questions-container" class="quiz-questions">
+                        <!-- Questions will be dynamically inserted here -->
+                    </div>
+                    
+                    <div class="quiz-navigation">
+                        <button type="button" id="prev-question" class="nav-button secondary" disabled>← Previous</button>
+                        <button type="button" id="next-question" class="nav-button primary">Next →</button>
+                        <button type="submit" id="submit-quiz" class="cta-button hidden">Get My Results 🎯</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Quiz Results -->
+            <div id="career-quiz-results" class="quiz-results-section hidden">
+                <div class="results-header">
+                    <h3>🎉 Your Personalized Career Recommendations</h3>
+                    <p>Based on your responses, here are the career paths that best match your interests:</p>
+                </div>
+                
+                <div id="quiz-results-cards" class="results-grid">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+                
+                <div class="quiz-actions">
+                    <button id="restart-quiz" class="nav-button secondary">Take Quiz Again</button>
+                    <a href="modules.html"><button class="cta-button">Explore Learning Modules →</button></a>
+                </div>
+                
+                <div class="results-disclaimer">
+                    <p><strong>Remember:</strong> This is just a guide! Explore these areas further, talk to people in these fields, and see what excites you the most. Your journey in high school is all about discovery!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentor Stories Section -->
+        <section id="mentors" class="section">
+            <h2>💡 Mentor Stories</h2>
+            <p>Learn from college students and professionals who've walked this path before you.</p>
+            
+            <div class="mentors-container">
+                <div class="mentor-card">
+                    <div class="mentor-avatar">👩‍💻</div>
+                    <h3>Sarah Chen</h3>
+                    <p class="mentor-title">Software Engineer at Google</p>
+                    <p class="mentor-story">"I started coding in high school through a program just like this. The hands-on projects gave me confidence to pursue computer science in college."</p>
+                    <button class="mentor-button">Watch Video 📹</button>
+                </div>
+                
+                <div class="mentor-card">
+                    <div class="mentor-avatar">🎬</div>
+                    <h3>Marcus Johnson</h3>
+                    <p class="mentor-title">Documentary Filmmaker</p>
+                    <p class="mentor-story">"My passion for storytelling started with making short films about social issues in my community during junior year."</p>
+                    <button class="mentor-button">Watch Video 📹</button>
+                </div>
+                
+                <div class="mentor-card">
+                    <div class="mentor-avatar">🌍</div>
+                    <h3>Priya Patel</h3>
+                    <p class="mentor-title">Policy Researcher</p>
+                    <p class="mentor-story">"Leading volunteer projects in high school taught me how policy can create real change. Now I work on education reform."</p>
+                    <button class="mentor-button">Watch Video 📹</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <h2>📊 Your Progress Dashboard</h2>
+            <p>Track your journey through the Ignite program and see how far you've come!</p>
+            
+            <div class="progress-container">
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <h3>🏆 Badges Earned</h3>
+                        <div class="stat-number">2</div>
+                        <p>Bronze Badge ✅<br>Silver Badge ⏳</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📚 Modules Completed</h3>
+                        <div class="stat-number">7</div>
+                        <p>Out of 12 total</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>🎯 Current Phase</h3>
+                        <div class="stat-number">2</div>
+                        <p>Build Phase - Sophomore Year</p>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <h4>Overall Progress</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 58%"></div>
+                    </div>
+                    <p>58% Complete - Keep going! 🚀</p>
+                </div>
+                
+                <div class="upcoming-events">
+                    <h4>🎪 Upcoming Events</h4>
+                    <div class="event-item">
+                        <span class="event-date">Mar 15</span>
+                        <span class="event-title">Innovation Dinner with Tech Professionals</span>
+                    </div>
+                    <div class="event-item">
+                        <span class="event-date">Apr 2</span>
+                        <span class="event-title">Collaborative Project Workshop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- AI Assistant Section -->
+        <section id="ai-assistant" class="section">
+            <div class="ai-hero">
+                <div class="ai-header">
+                    <div class="ai-avatar">
+                        <div class="ai-avatar-circle">
+                            <span class="ai-icon">🤖</span>
+                        </div>
+                        <div class="ai-status">
+                            <div class="status-dot"></div>
+                            <span>AI Assistant Online</span>
+                        </div>
+                    </div>
+                    <div class="ai-intro">
+                        <h2>AI Project Assistant</h2>
+                        <p>Transform your challenge statement into a structured project roadmap with personalized module recommendations</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-interface">
+                <div class="ai-input-section">
+                    <div class="input-header">
+                        <h3>📝 Your Challenge</h3>
+                        <p>Describe your project idea, problem to solve, or learning goal</p>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="challenge-input" class="challenge-input" placeholder="Example: Create an app that helps students find study groups on campus..." rows="4"></textarea>
+                        <div class="input-actions">
+                            <div class="input-tips">
+                                <span class="tip">💡 Tip: Be specific about your goals and target audience</span>
+                            </div>
+                            <button class="ai-submit-btn" onclick="processChallenge()">
+                                <span class="btn-icon">✨</span>
+                                Generate Plan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ai-response" class="ai-response-container">
+                    <div class="response-placeholder">
+                        <div class="placeholder-icon">🚀</div>
+                        <h4>Ready to build something amazing?</h4>
+                        <p>Enter your challenge above and I'll create a step-by-step project plan with learning modules tailored just for you.</p>
+                        
+                        <div class="example-challenges">
+                            <h5>Try these examples:</h5>
+                            <div class="challenge-examples">
+                                <button class="example-btn" onclick="fillExample('Build a mobile app that connects volunteers with local nonprofits')">
+                                    📱 Volunteer App
+                                </button>
+                                <button class="example-btn" onclick="fillExample('Create a podcast series about climate change solutions')">
+                                    🎙️ Climate Podcast
+                                </button>
+                                <button class="example-btn" onclick="fillExample('Design a community garden project for my neighborhood')">
+                                    🌱 Community Garden
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Hub Section -->
+        <section id="digital-hub" class="section">
+            <h2>🎮 The Digital Hub</h2>
+            <p>Your gamified learning environment - a cross between Club Penguin and Canvas!</p>
+            
+            <!-- Avatar & Stats Bar -->
+            <div class="hub-header">
+                <div class="avatar-section">
+                    <div class="student-avatar" id="student-avatar">👤</div>
+                    <div class="avatar-info">
+                        <h3>Alex Student</h3>
+                        <p>Level 7 Explorer</p>
+                        <button class="customize-btn" onclick="openAvatarCustomizer()">Customize Avatar</button>
+                    </div>
+                </div>
+                
+                <div class="coins-section">
+                    <div class="coin-display">
+                        <span class="coin-icon">🪙</span>
+                        <span class="coin-count">1,250</span>
+                        <span class="coin-label">Ignite Coins</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avatar Customizer Modal -->
+            <div id="avatar-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAvatarCustomizer()">&times;</span>
+                    <h3>Customize Your Avatar</h3>
+                    <div class="avatar-options">
+                        <div class="avatar-category">
+                            <h4>Character Style</h4>
+                            <div class="avatar-choices">
+                                <button class="avatar-choice" onclick="setAvatar('👤')">👤</button>
+                                <button class="avatar-choice" onclick="setAvatar('👨‍🎓')">👨‍🎓</button>
+                                <button class="avatar-choice" onclick="setAvatar('👩‍🎓')">👩‍🎓</button>
+                                <button class="avatar-choice" onclick="setAvatar('👨‍💻')">👨‍💻</button>
+                                <button class="avatar-choice" onclick="setAvatar('👩‍💻')">👩‍💻</button>
+                                <button class="avatar-choice" onclick="setAvatar('👨‍🔬')">👨‍🔬</button>
+                                <button class="avatar-choice" onclick="setAvatar('👩‍🔬')">👩‍🔬</button>
+                                <button class="avatar-choice" onclick="setAvatar('👨‍🎨')">👨‍🎨</button>
+                                <button class="avatar-choice" onclick="setAvatar('👩‍🎨')">👩‍🎨</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hub Features Grid -->
+            <div class="hub-features">
+                <!-- Gamified Modules -->
+                <div class="hub-feature">
+                    <div class="feature-header">
+                        <h3>🎯 Gamified Modules</h3>
+                        <p>Earn coins by completing career-specific challenges!</p>
+                    </div>
+                    <div class="module-grid">
+                        <div class="game-module">
+                            <div class="module-icon">🤖</div>
+                            <h4>Robotics Quest</h4>
+                            <div class="module-progress">
+                                <div class="progress-bar-small">
+                                    <div class="progress-fill-small" style="width: 75%"></div>
+                                </div>
+                                <span>3/4 challenges</span>
+                            </div>
+                            <div class="module-reward">🪙 +50 coins</div>
+                        </div>
+                        
+                        <div class="game-module">
+                            <div class="module-icon">🎬</div>
+                            <h4>Video Creator</h4>
+                            <div class="module-progress">
+                                <div class="progress-bar-small">
+                                    <div class="progress-fill-small" style="width: 40%"></div>
+                                </div>
+                                <span>2/5 challenges</span>
+                            </div>
+                            <div class="module-reward">🪙 +75 coins</div>
+                        </div>
+                        
+                        <div class="game-module">
+                            <div class="module-icon">🌍</div>
+                            <h4>Change Maker</h4>
+                            <div class="module-progress">
+                                <div class="progress-bar-small">
+                                    <div class="progress-fill-small" style="width: 100%"></div>
+                                </div>
+                                <span>Completed! ✅</span>
+                            </div>
+                            <div class="module-reward">🪙 +100 coins earned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Assistants -->
+                <div class="hub-feature">
+                    <div class="feature-header">
+                        <h3>🤖 AI Assistants</h3>
+                        <p>Get help with academics and wellness 24/7</p>
+                    </div>
+                    <div class="assistant-grid">
+                        <div class="assistant-card" onclick="openChatBot('tutor')">
+                            <div class="assistant-avatar">📚</div>
+                            <h4>Study Buddy</h4>
+                            <p>Academic help & research support</p>
+                            <div class="assistant-status online">● Online</div>
+                        </div>
+                        
+                        <div class="assistant-card" onclick="openChatBot('therapist')">
+                            <div class="assistant-avatar">💚</div>
+                            <h4>Wellness Coach</h4>
+                            <p>Mental health support & stress relief</p>
+                            <div class="assistant-status online">● Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Features -->
+                <div class="hub-feature">
+                    <div class="feature-header">
+                        <h3>💬 Community Space</h3>
+                        <p>Connect and collaborate with fellow students</p>
+                    </div>
+                    <div class="community-options">
+                        <button class="community-btn" onclick="openForums()">📋 Discussion Forums</button>
+                        <button class="community-btn" onclick="openMessaging()">💭 Private Messages</button>
+                        <button class="community-btn" onclick="openCollabSpace()">🤝 Project Collaboration</button>
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h4>Recent Activity</h4>
+                        <div class="activity-item">
+                            <span class="activity-avatar">👩‍🎓</span>
+                            <span class="activity-text">Maya shared a project in STEM Track</span>
+                            <span class="activity-time">2h ago</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-avatar">👨‍🎨</span>
+                            <span class="activity-text">Jordan started a new discussion in Arts Forum</span>
+                            <span class="activity-time">4h ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Bot Modal -->
+            <div id="chatbot-modal" class="modal" style="display: none;">
+                <div class="modal-content chat-modal">
+                    <div class="chat-header">
+                        <h3 id="chat-title">AI Assistant</h3>
+                        <span class="close" onclick="closeChatBot()">&times;</span>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="handleChatEnter(event)">
+                        <button onclick="sendChatMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

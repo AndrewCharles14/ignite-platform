@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Modules - Interactive Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modules.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="logo.png" alt="Ignite" class="logo">
+                <h1>Ignite</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Back to Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showTrackModules('stem')">🔬 STEM</a></li>
+                <li><a href="javascript:void(0)" onclick="showTrackModules('arts')">🎨 Arts</a></li>
+                <li><a href="javascript:void(0)" onclick="showTrackModules('leadership')">🌍 Leadership</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Module Selection Section -->
+        <section id="module-selection" class="section active">
+            <div class="module-hero">
+                <h2>Choose Your Learning Track</h2>
+                <p>Select a track below to explore interactive modules and start earning coins!</p>
+            </div>
+
+            <div class="track-selection">
+                <div class="track-option" onclick="showTrackModules('stem')">
+                    <div class="track-icon">🔬</div>
+                    <h3>STEM & Innovation</h3>
+                    <p>Robotics, Coding, Data Science</p>
+                    <div class="module-count">6 Modules Available</div>
+                </div>
+
+                <div class="track-option" onclick="showTrackModules('arts')">
+                    <div class="track-icon">🎨</div>
+                    <h3>Arts & Communication</h3>
+                    <p>Video, Design, Podcasting</p>
+                    <div class="module-count">5 Modules Available</div>
+                </div>
+
+                <div class="track-option" onclick="showTrackModules('leadership')">
+                    <div class="track-icon">🌍</div>
+                    <h3>Social Change & Leadership</h3>
+                    <p>Policy, Community, Civic Engagement</p>
+                    <div class="module-count">5 Modules Available</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEM Track Modules -->
+        <section id="stem-modules" class="section track-modules">
+            <div class="track-header">
+                <button class="back-btn" onclick="showSection('module-selection')">← Back to Tracks</button>
+                <h2>🔬 STEM & Innovation Modules</h2>
+                <p>Build technical skills through hands-on projects and challenges</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule('robotics-basics')">
+                    <div class="module-status completed">✅</div>
+                    <div class="module-icon">🤖</div>
+                    <h3>Robotics Basics</h3>
+                    <p>Learn fundamental robotics concepts and build your first robot</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">2 hours</span>
+                        <span class="coins">+100 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-bar-small">
+                            <div class="progress-fill-small" style="width: 100%"></div>
+                        </div>
+                        <span>Completed!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('intro-coding')">
+                    <div class="module-status in-progress">📚</div>
+                    <div class="module-icon">💻</div>
+                    <h3>Intro to Coding</h3>
+                    <p>Start your programming journey with Python basics</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">3 hours</span>
+                        <span class="coins">+150 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-bar-small">
+                            <div class="progress-fill-small" style="width: 60%"></div>
+                        </div>
+                        <span>3/5 lessons</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('data-science')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">📊</div>
+                    <h3>Data Science Fundamentals</h3>
+                    <p>Analyze data and create visualizations</p>
+                    <div class="module-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">4 hours</span>
+                        <span class="coins">+200 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete "Intro to Coding" to unlock</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('web-development')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Build interactive websites with HTML, CSS, and JavaScript</p>
+                    <div class="module-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">5 hours</span>
+                        <span class="coins">+250 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete "Intro to Coding" to unlock</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('ai-machine-learning')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">🧠</div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Explore artificial intelligence and build smart applications</p>
+                    <div class="module-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">6 hours</span>
+                        <span class="coins">+300 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete "Data Science" to unlock</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('capstone-project')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">🚀</div>
+                    <h3>STEM Capstone Project</h3>
+                    <p>Apply everything you've learned in a final project</p>
+                    <div class="module-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">8 hours</span>
+                        <span class="coins">+500 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete all previous modules to unlock</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arts Track Modules -->
+        <section id="arts-modules" class="section track-modules">
+            <div class="track-header">
+                <button class="back-btn" onclick="showSection('module-selection')">← Back to Tracks</button>
+                <h2>🎨 Arts & Communication Modules</h2>
+                <p>Express creativity through digital media and storytelling</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule('graphic-design')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">✏️</div>
+                    <h3>Graphic Design Basics</h3>
+                    <p>Learn design principles and create stunning visuals</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">3 hours</span>
+                        <span class="coins">+120 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('video-production')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">🎬</div>
+                    <h3>Video Production</h3>
+                    <p>Film, edit, and produce professional videos</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">4 hours</span>
+                        <span class="coins">+150 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('podcasting')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">🎙️</div>
+                    <h3>Podcasting 101</h3>
+                    <p>Create engaging audio content and storytelling</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">3 hours</span>
+                        <span class="coins">+130 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('digital-storytelling')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">📖</div>
+                    <h3>Digital Storytelling</h3>
+                    <p>Combine multiple media to tell compelling stories</p>
+                    <div class="module-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">4 hours</span>
+                        <span class="coins">+200 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete 2 beginner modules to unlock</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('arts-capstone')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">🎭</div>
+                    <h3>Creative Portfolio Project</h3>
+                    <p>Showcase your creative work in a professional portfolio</p>
+                    <div class="module-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">6 hours</span>
+                        <span class="coins">+400 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete all previous modules to unlock</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Track Modules -->
+        <section id="leadership-modules" class="section track-modules">
+            <div class="track-header">
+                <button class="back-btn" onclick="showSection('module-selection')">← Back to Tracks</button>
+                <h2>🌍 Social Change & Leadership Modules</h2>
+                <p>Develop leadership skills and create positive impact</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule('community-organizing')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">🤝</div>
+                    <h3>Community Organizing</h3>
+                    <p>Learn to mobilize people for positive change</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">3 hours</span>
+                        <span class="coins">+140 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('policy-writing')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">📝</div>
+                    <h3>Policy Writing</h3>
+                    <p>Draft effective policies that create change</p>
+                    <div class="module-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">4 hours</span>
+                        <span class="coins">+180 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('civic-engagement')">
+                    <div class="module-status available">▶️</div>
+                    <div class="module-icon">🗳️</div>
+                    <h3>Civic Engagement</h3>
+                    <p>Understand government and democratic participation</p>
+                    <div class="module-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">3 hours</span>
+                        <span class="coins">+130 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Ready to start!</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('impact-measurement')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">📊</div>
+                    <h3>Impact Measurement</h3>
+                    <p>Track and evaluate social change initiatives</p>
+                    <div class="module-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">4 hours</span>
+                        <span class="coins">+200 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete 2 beginner modules to unlock</span>
+                    </div>
+                </div>
+
+                <div class="module-card" onclick="openModule('leadership-capstone')">
+                    <div class="module-status locked">🔒</div>
+                    <div class="module-icon">👑</div>
+                    <h3>Leadership Project</h3>
+                    <p>Lead a real community initiative from start to finish</p>
+                    <div class="module-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">8 hours</span>
+                        <span class="coins">+500 🪙</span>
+                    </div>
+                    <div class="module-progress">
+                        <span>Complete all previous modules to unlock</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Module Content -->
+        <section id="module-content" class="section">
+            <div class="module-header">
+                <button class="back-btn" onclick="backToModules()">← Back to Modules</button>
+                <div class="module-title">
+                    <h2 id="current-module-title">Module Title</h2>
+                    <p id="current-module-description">Module description will appear here</p>
+                </div>
+                <div class="module-coins">
+                    <span id="module-coins-reward">+0 🪙</span>
+                </div>
+            </div>
+
+            <div class="module-content-area">
+                <div class="lesson-sidebar">
+                    <h3>Lessons</h3>
+                    <ul id="lesson-list">
+                        <!-- Lessons will be populated here -->
+                    </ul>
+                </div>
+
+                <div class="lesson-content">
+                    <div id="lesson-area">
+                        <!-- Current lesson content will appear here -->
+                    </div>
+                    
+                    <div class="lesson-navigation">
+                        <button id="prev-lesson" onclick="previousLesson()" disabled>← Previous</button>
+                        <button id="next-lesson" onclick="nextLesson()">Next →</button>
+                        <button id="complete-lesson" onclick="completeLesson()" style="display: none;">Complete Lesson ✅</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="modules-fixed.js"></script>
+</body>
+</html>
