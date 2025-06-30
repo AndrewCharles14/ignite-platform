@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator for Ignite Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .qr-container {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #qrcode {
+            margin: 20px 0;
+        }
+        .url-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Ignite Platform QR Code</h1>
+    <p>Generate a QR code for easy access to your website!</p>
+    
+    <div class="url-display">
+        <strong>Your Website URL:</strong><br>
+        https://andrewcharles14.github.io/ignite-platform/
+    </div>
+    
+    <button onclick="generateQR()">Generate QR Code</button>
+    
+    <div class="qr-container">
+        <div id="qrcode"></div>
+        <p id="qr-instructions" style="display: none;">
+            <strong>How to use:</strong><br>
+            1. Save this QR code image<br>
+            2. Print it on flyers, business cards, or presentations<br>
+            3. People can scan it with their phone camera to visit your site instantly!
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        function generateQR() {
+            const url = 'https://andrewcharles14.github.io/ignite-platform/';
+            const canvas = document.createElement('canvas');
+            
+            QRCode.toCanvas(canvas, url, {
+                width: 300,
+                margin: 2,
+                color: {
+                    dark: '#000000',
+                    light: '#FFFFFF'
+                }
+            }, function (error) {
+                if (error) {
+                    console.error(error);
+                    document.getElementById('qrcode').innerHTML = '<p style="color: red;">Error generating QR code</p>';
+                } else {
+                    document.getElementById('qrcode').innerHTML = '';
+                    document.getElementById('qrcode').appendChild(canvas);
+                    document.getElementById('qr-instructions').style.display = 'block';
+                    
+                    // Add download button
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.textContent = 'Download QR Code';
+                    downloadBtn.style.marginLeft = '10px';
+                    downloadBtn.onclick = function() {
+                        const link = document.createElement('a');
+                        link.download = 'ignite-platform-qr-code.png';
+                        link.href = canvas.toDataURL();
+                        link.click();
+                    };
+                    document.getElementById('qrcode').appendChild(document.createElement('br'));
+                    document.getElementById('qrcode').appendChild(downloadBtn);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

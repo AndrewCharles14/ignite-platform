@@ -197,7 +197,272 @@ function closeAvatarCustomizer() {
 function setAvatar(emoji) {
     document.getElementById('student-avatar').textContent = emoji;
     closeAvatarCustomizer();
+    showNotification('Avatar updated! ✨', 'success');
 }
+
+// Interactive Animations and Effects
+function addInteractiveElements() {
+    // Add floating action button
+    const fab = document.createElement('button');
+    fab.className = 'floating-action-btn';
+    fab.innerHTML = '🚀';
+    fab.onclick = () => showSection('ai-assistant');
+    fab.title = 'Quick AI Assistant';
+    document.body.appendChild(fab);
+    
+    // Add count-up animation to stat numbers
+    animateCounters();
+    
+    // Add parallax effect to hero section
+    addParallaxEffect();
+    
+    // Add interactive card effects
+    addCardInteractions();
+    
+    // Add typing animation to hero title
+    addTypingAnimation();
+}
+
+// Count-up animation for statistics
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const animateCounter = (counter) => {
+        const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
+        const increment = target / 60; // Animation duration
+        let current = 0;
+        
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                if (counter.textContent.includes('+')) {
+                    counter.textContent = Math.ceil(current) + '+';
+                } else if (counter.textContent.includes('/')) {
+                    counter.textContent = Math.ceil(current) + '/7';
+                } else {
+                    counter.textContent = Math.ceil(current);
+                }
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = counter.textContent.includes('+') ? target + '+' : 
+                                   counter.textContent.includes('/') ? target + '/7' : target;
+            }
+        };
+        
+        updateCounter();
+    };
+    
+    // Use Intersection Observer to trigger animation when visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Parallax effect for hero section
+function addParallaxEffect() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-visual, .section::before');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+}
+
+// Enhanced card interactions
+function addCardInteractions() {
+    const cards = document.querySelectorAll('.track-card, .mentor-card, .phase-item, .stat-item');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        card.addEventListener('click', function() {
+            this.style.transform = 'translateY(-4px) scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            }, 150);
+        });
+    });
+}
+
+// Typing animation for hero title
+function addTypingAnimation() {
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        heroTitle.style.borderRight = '2px solid #667eea';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                setTimeout(() => {
+                    heroTitle.style.borderRight = 'none';
+                }, 1000);
+            }
+        };
+        
+        // Start typing animation when hero section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(typeWriter, 500);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(heroTitle);
+    }
+}
+
+// Notification system
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `game-notification ${type}`;
+    notification.innerHTML = `
+        <span class="notification-message">${message}</span>
+        <button class="notification-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
+}
+
+// Quiz progress animation
+function updateQuizProgress(current, total) {
+    const progressFill = document.getElementById('quiz-progress-fill');
+    const progressText = document.getElementById('current-question-num');
+    
+    if (progressFill && progressText) {
+        const percentage = (current / total) * 100;
+        progressFill.style.width = percentage + '%';
+        progressText.textContent = current;
+        
+        // Add pulsing animation for milestone questions
+        if (current % 5 === 0) {
+            progressFill.style.animation = 'pulseProgress 0.6s ease-in-out';
+            setTimeout(() => {
+                progressFill.style.animation = '';
+            }, 600);
+        }
+    }
+}
+
+// Progress bar pulsing animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulseProgress {
+        0%, 100% {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        50% {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Smooth scroll to sections
+function smoothScrollTo(targetId) {
+    const target = document.getElementById(targetId);
+    if (target) {
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Interactive button click effects
+function addButtonEffects() {
+    const buttons = document.querySelectorAll('button, .hero-button, .cta-button, .section-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+}
+
+// Initialize all interactive elements when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    addInteractiveElements();
+    addButtonEffects();
+    
+    // Add some delay for better visual effect
+    setTimeout(() => {
+        showNotification('Welcome to Ignite Platform! 🎉', 'success');
+    }, 1000);
+});
+
+// Ripple effect CSS
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: rippleAnimation 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes rippleAnimation {
+        0% {
+            transform: scale(0);
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
 
 function openChatBot(type) {
     const modal = document.getElementById('chatbot-modal');
